@@ -1,8 +1,8 @@
-# Java FSE - Design Patterns and Principles
+# Java FSE
 
-This folder contains solutions for the 11 design-pattern exercises from `Design Patterns and Principles.docx`.
+This repository contains plain Java solutions for Java FSE deep-skilling exercises.
 
-Each exercise is a separate plain Java project with source files under `src/` and a runnable demo class:
+## Design Patterns and Principles
 
 1. `SingletonPatternExample`
 2. `FactoryMethodPatternExample`
@@ -15,6 +15,16 @@ Each exercise is a separate plain Java project with source files under `src/` an
 9. `CommandPatternExample`
 10. `MVCPatternExample`
 11. `DependencyInjectionExample`
+
+## Algorithms and Data Structures
+
+1. `InventoryManagementSystem`
+2. `EcommerceSearchFunction`
+3. `SortingCustomerOrders`
+4. `EmployeeManagementSystem`
+5. `TaskManagementSystem`
+6. `LibraryManagementSystem`
+7. `FinancialForecasting`
 
 To compile and run any project:
 
