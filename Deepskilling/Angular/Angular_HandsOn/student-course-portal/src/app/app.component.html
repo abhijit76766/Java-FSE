@@ -1,0 +1,7 @@
+<app-header></app-header>
+@if (loadingService.isLoading$ | async) {
+  <div class="loading-bar">Loading...</div>
+}
+<main>
+  <router-outlet></router-outlet>
+</main>

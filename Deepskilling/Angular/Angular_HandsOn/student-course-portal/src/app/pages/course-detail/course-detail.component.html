@@ -1,0 +1,11 @@
+@if (course) {
+  <article>
+    <h1 class="page-title">{{ course.name }}</h1>
+    <p>Code: {{ course.code }}</p>
+    <p>Credits: {{ course.credits }}</p>
+    <p>Status: {{ course.gradeStatus }}</p>
+    <a routerLink="/courses">Back to courses</a>
+  </article>
+} @else {
+  <p>Course not found.</p>
+}

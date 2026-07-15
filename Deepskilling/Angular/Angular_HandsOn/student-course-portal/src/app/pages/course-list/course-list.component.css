@@ -1,0 +1,27 @@
+label {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 20px;
+  max-width: 340px;
+}
+
+input {
+  border: 1px solid #b8c1d1;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.course-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card-button {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}

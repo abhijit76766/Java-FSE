@@ -1,0 +1,39 @@
+<section>
+  <h1 class="page-title">Courses</h1>
+
+  <label>
+    Search
+    <input [(ngModel)]="searchTerm" (input)="updateSearch()" placeholder="angular">
+  </label>
+
+  @if (loading$ | async) {
+    <p>Loading courses...</p>
+  }
+
+  @if (error$ | async; as error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  @if (courses$ | async; as coursesFromStore) {
+    @if (coursesFromStore.length > 0) {
+      <div class="course-grid">
+        @for (course of coursesFromStore; track trackByCourseId($index, course)) {
+          <button class="card-button" type="button" (click)="openCourse(course)">
+            <app-course-card
+              appHighlight="lightblue"
+              [course]="course"
+              [enrolledIds]="enrolledIds$ | async"
+              (enrollRequested)="onEnroll($event)">
+            </app-course-card>
+          </button>
+        }
+      </div>
+    } @else {
+      <p>No courses available.</p>
+    }
+  }
+
+  @if (selectedCourseId) {
+    <p>Selected course ID: {{ selectedCourseId }}</p>
+  }
+</section>

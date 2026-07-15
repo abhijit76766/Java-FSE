@@ -1,0 +1,25 @@
+<article class="course-card" [ngClass]="cardClasses" [ngStyle]="borderStyle">
+  <h3>{{ course.name }}</h3>
+  <p>{{ course.code }} - {{ course.credits | creditLabel }}</p>
+
+  @switch (course.gradeStatus) {
+    @case ('passed') {
+      <span class="badge badge--passed">Passed</span>
+    }
+    @case ('failed') {
+      <span class="badge badge--failed">Failed</span>
+    }
+    @default {
+      <span class="badge badge--pending">Pending</span>
+    }
+  }
+
+  @if (isExpanded) {
+    <p>This course is part of the Student Course Portal learning plan.</p>
+  }
+
+  <div class="actions">
+    <button type="button" (click)="toggleDetails()">Show Details</button>
+    <button type="button" (click)="toggleEnrollment()">{{ isEnrolled ? 'Unenroll' : 'Enroll' }}</button>
+  </div>
+</article>

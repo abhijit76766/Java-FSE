@@ -1,0 +1,24 @@
+<section>
+  <h1 class="page-title">{{ portalName }}</h1>
+  <p>Browse courses, request enrollment, track grades, and review your student profile.</p>
+
+  <div class="stats">
+    <span>Courses Available: {{ coursesAvailable }}</span>
+    <span>Enrolled: {{ enrolled }}</span>
+    <span>GPA: {{ gpa }}</span>
+  </div>
+
+  <label>
+    Search courses
+    <input [(ngModel)]="searchTerm" placeholder="Angular, testing, cloud">
+  </label>
+  <p>Searching for: {{ searchTerm }}</p>
+
+  <!-- [disabled] is one-way component-to-DOM binding; [(ngModel)] is two-way DOM-to-component and component-to-DOM binding. -->
+  <button [disabled]="!isPortalActive" (click)="onEnrollClick()">Enroll Now</button>
+  @if (message) {
+    <p class="success">{{ message }}</p>
+  }
+
+  <app-course-summary-widget></app-course-summary-widget>
+</section>

@@ -1,0 +1,45 @@
+form {
+  display: grid;
+  gap: 12px;
+  max-width: 480px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+}
+
+.check {
+  align-items: center;
+  display: flex;
+}
+
+input,
+select {
+  border: 1px solid #b8c1d1;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.ng-valid.ng-touched {
+  border-color: green;
+}
+
+span {
+  color: #b00020;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.success {
+  color: #0a7a3d;
+  font-weight: 700;
+  margin-top: 16px;
+}

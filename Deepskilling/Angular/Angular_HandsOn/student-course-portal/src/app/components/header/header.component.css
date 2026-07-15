@@ -1,0 +1,30 @@
+.site-header {
+  background: #ffffff;
+  border-bottom: 1px solid #d8deea;
+}
+
+nav {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: 16px 24px;
+}
+
+a {
+  color: #34445f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.brand {
+  color: #0f5b95;
+  font-size: 20px;
+  margin-right: auto;
+}
+
+.active {
+  color: #b44b00;
+}

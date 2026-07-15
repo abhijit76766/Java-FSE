@@ -1,0 +1,28 @@
+form {
+  display: grid;
+  gap: 12px;
+  max-width: 520px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+}
+
+.check,
+.array-row {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+input,
+select {
+  border: 1px solid #b8c1d1;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+span {
+  color: #b00020;
+}

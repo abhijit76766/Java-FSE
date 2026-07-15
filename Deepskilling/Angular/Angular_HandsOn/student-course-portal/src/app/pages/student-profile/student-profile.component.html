@@ -1,0 +1,12 @@
+<section>
+  <h1 class="page-title">Student Profile</h1>
+  <p>Name: Abhij Student</p>
+  <p>Email: student@example.com</p>
+
+  <h2>Enrolled Courses</h2>
+  @for (course of enrollmentService.getEnrolledCourses(); track course.id) {
+    <p>{{ course.name }} ({{ course.code }})</p>
+  } @empty {
+    <p>No enrolled courses yet.</p>
+  }
+</section>

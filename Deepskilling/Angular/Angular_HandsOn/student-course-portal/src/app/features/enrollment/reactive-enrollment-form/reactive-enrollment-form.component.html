@@ -1,0 +1,50 @@
+<h1 class="page-title">Reactive Enrollment</h1>
+
+<form [formGroup]="enrollForm" (ngSubmit)="onSubmit()">
+  <label>
+    Student name
+    <input formControlName="studentName">
+  </label>
+
+  <label>
+    Email
+    <input type="email" formControlName="studentEmail">
+  </label>
+  @if (enrollForm.get('studentEmail')?.errors?.['emailTaken']) {
+    <span>Email taken</span>
+  }
+
+  <label>
+    Course ID
+    <input formControlName="courseId">
+  </label>
+  @if (enrollForm.get('courseId')?.errors?.['noCourseCode']) {
+    <span>Course code starting with XX is not allowed.</span>
+  }
+
+  <label>
+    Preferred semester
+    <select formControlName="preferredSemester">
+      <option>Odd</option>
+      <option>Even</option>
+    </select>
+  </label>
+
+  <label class="check">
+    <input type="checkbox" formControlName="agreeToTerms">
+    Agree to terms
+  </label>
+
+  <section formArrayName="additionalCourses">
+    <h2>Additional Courses</h2>
+    @for (ctrl of additionalCourses.controls; track $index) {
+      <div class="array-row">
+        <input [formControl]="ctrl">
+        <button type="button" (click)="removeCourse($index)">Remove</button>
+      </div>
+    }
+  </section>
+
+  <button type="button" (click)="addCourse()">Add Another Course</button>
+  <button type="submit" [disabled]="enrollForm.invalid">Submit</button>
+</form>

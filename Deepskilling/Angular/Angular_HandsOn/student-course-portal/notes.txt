@@ -1,0 +1,12 @@
+angular.json - Angular CLI workspace configuration, including build/serve/test targets and production budgets.
+tsconfig.json - Base TypeScript compiler settings for the workspace.
+tsconfig.app.json - TypeScript settings used for application builds.
+package.json - npm dependencies and scripts for running, building, testing, and starting JSON Server.
+src/main.ts - Application entry point that bootstraps the standalone root component.
+src/app/app.config.ts - Standalone provider setup for router, HttpClient, interceptors, NgRx store, effects, and devtools.
+src/app/app.component.ts - Root component that renders the header, loading indicator, and router outlet.
+src/index.html - Browser host page containing the root app element.
+
+Production budget notes:
+maximumWarning warns when the bundle exceeds the configured size.
+maximumError fails the production build when the bundle exceeds the configured size.
