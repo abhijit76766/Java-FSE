@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      filter:
+        local-response-cache:
+          enabled: true
+      routes:
+        - id: greet-route
+          uri: lb://greet-service
+          predicates:
+            - Path=/greet-service/**
+          filters:
+            - RewritePath=/greet-service/(?<segment>.*), /${segment}
+            - name: CircuitBreaker
+              args:
+                name: greetCircuitBreaker
+                fallbackUri: forward:/fallback
+        - id: account-route
+          uri: lb://account-service
+          predicates:
+            - Path=/account-service/**
+          filters:
+            - RewritePath=/account-service/(?<segment>.*), /${segment}
+        - id: loan-route
+          uri: lb://loan-service
+          predicates:
+            - Path=/loan-service/**
+          filters:
+            - RewritePath=/loan-service/(?<segment>.*), /${segment}
+        - id: customer-route
+          uri: lb://customer-service
+          predicates:
+            - Path=/customer-service/**
+          filters:
+            - RewritePath=/customer-service/(?<segment>.*), /${segment}
+        - id: billing-route
+          uri: lb://billing-service
+          predicates:
+            - Path=/billing-service/**
+          filters:
+            - RewritePath=/billing-service/(?<segment>.*), /${segment}
+
+server:
+  port: 9090
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
