@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap 5 Exercises</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="pb-5">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">CityPortal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+      <div id="mainNav" class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto nav nav-pills">
+          <li class="nav-item"><a class="nav-link text-white" href="#grid">Grid</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#forms">Forms</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#components">Components</a></li>
+        </ul>
+        <form class="d-flex"><input class="form-control me-2" placeholder="Search"><button class="btn btn-outline-light">Search</button></form>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <section class="mb-5">
+      <h1 class="display-1 text-uppercase">Bootstrap 5</h1>
+      <p class="lead text-muted fw-bold text-capitalize">responsive utilities, components, spacing, colors, icons, and plugins.</p>
+      <p class="text-lowercase">THIS LINE DEMONSTRATES LOWERCASE UTILITY.</p>
+    </section>
+
+    <section id="grid" class="mb-5">
+      <h2>Responsive Grid</h2>
+      <div class="row g-3 align-items-center justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4"><div class="p-3 bg-primary text-white">Mobile 1, Tablet 2, Desktop 3</div></div>
+        <div class="col-12 col-md-6 col-lg-4"><div class="p-3 bg-success text-white">Column Two</div></div>
+        <div class="col-12 col-md-6 col-lg-4"><div class="p-3 bg-warning">Column Three</div></div>
+      </div>
+      <div class="row mt-4">
+        <aside class="col-md-3 d-none d-md-block bg-light p-3">Responsive sidebar</aside>
+        <article class="col-md-9 p-3">Main content area using <code>col-md-9</code>.</article>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm-3"><div class="p-2 border">One</div></div>
+        <div class="col-sm-3"><div class="p-2 border">Two</div></div>
+        <div class="col-sm-3"><div class="p-2 border">Three</div></div>
+        <div class="col-sm-3"><div class="p-2 border">Four</div></div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6 order-md-2"><div class="p-3 bg-info">Appears second on desktop</div></div>
+        <div class="col-md-6 order-md-1"><div class="p-3 bg-secondary text-white">Appears first on desktop</div></div>
+      </div>
+    </section>
+
+    <section class="d-flex flex-column flex-md-row justify-content-between align-items-center bg-light p-3 mb-5">
+      <span class="fw-bold">Flex Navbar</span>
+      <span>Home</span><span>Events</span><span>Contact</span>
+    </section>
+
+    <section id="forms" class="mb-5">
+      <h2>Forms and Buttons</h2>
+      <form class="row g-3">
+        <div class="col-md-6"><input class="form-control" placeholder="Full name"></div>
+        <div class="col-md-6"><div class="input-group"><span class="input-group-text">@</span><input class="form-control" placeholder="Email"></div></div>
+        <div class="col-12 form-check ms-2"><input class="form-check-input" type="checkbox" id="agree"><label class="form-check-label" for="agree">Agree to updates</label></div>
+        <div class="form-floating col-md-6"><input class="form-control" id="loginEmail" placeholder="email"><label for="loginEmail">Login email</label></div>
+      </form>
+      <div class="btn-group my-3">
+        <button class="btn btn-primary">Primary</button><button class="btn btn-secondary">Secondary</button><button class="btn btn-outline-success">Outline</button>
+      </div>
+      <div class="btn-group" role="group">
+        <input type="checkbox" class="btn-check" id="toggle1"><label class="btn btn-outline-primary" for="toggle1">Toggle</label>
+      </div>
+    </section>
+
+    <section id="components" class="mb-5">
+      <h2>Cards, Utilities, Plugins</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow-lg rounded-3">
+            <img src="https://picsum.photos/seed/profile/400/240" class="card-img-top border border-primary border-3" alt="profile">
+            <div class="card-body"><h5 class="card-title">Profile Card</h5><p class="card-text">Card body and title.</p></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex align-items-start gap-3 shadow p-3 rounded-pill">
+            <img class="rounded-circle" width="72" height="72" src="https://picsum.photos/seed/avatar/120/120" alt="avatar">
+            <p>Media object style layout with image aligned left.</p>
+          </div>
+        </div>
+        <div class="col-md-4 position-relative">
+          <img class="img-fluid rounded" src="https://picsum.photos/seed/badge/420/260" alt="event">
+          <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">New</span>
+        </div>
+      </div>
+
+      <div class="row my-5 text-white">
+        <div class="col p-3 bg-primary">Primary</div>
+        <div class="col p-3 bg-warning text-dark">Warning</div>
+        <div class="col p-3 bg-dark bg-gradient">Dark gradient</div>
+      </div>
+
+      <div class="pricing p-2 py-5 bg-light">
+        <div class="row g-4">
+          <div class="col-md-4"><div class="p-4 border rounded">Free</div></div>
+          <div class="col-md-4"><div class="p-4 border rounded">Standard</div></div>
+          <div class="col-md-4"><div class="p-4 border rounded">Premium</div></div>
+        </div>
+      </div>
+
+      <button class="btn btn-success my-4" data-bs-toggle="modal" data-bs-target="#eventModal">Open Modal</button>
+      <button class="btn btn-outline-dark" aria-label="Settings"><i class="bi bi-gear"></i></button>
+
+      <div class="accordion" id="faq">
+        <div class="accordion-item">
+          <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#answer">Accordion</button></h2>
+          <div id="answer" class="accordion-collapse collapse show" data-bs-parent="#faq"><div class="accordion-body">Bootstrap JavaScript behavior is active.</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="position-fixed bottom-0 start-0 end-0 bg-dark text-white text-center p-2">
+    <i class="bi bi-facebook me-3"></i><i class="bi bi-twitter-x me-3"></i><i class="bi bi-github"></i>
+  </footer>
+
+  <div class="modal fade" id="eventModal" tabindex="-1">
+    <div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h5 class="modal-title">Event Modal</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">Modal popup triggered by a button.</div></div></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

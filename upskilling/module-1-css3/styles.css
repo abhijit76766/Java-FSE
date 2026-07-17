@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header styles */
+body {
+  min-height: 100vh;
+  color: #1f2937;
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #eef6ff;
+  background-image: linear-gradient(rgba(255,255,255,.86), rgba(255,255,255,.86)), url('https://picsum.photos/seed/city/1200/800');
+  background-size: cover;
+  line-height: 1.6;
+}
+
+#mainHeader {
+  padding: 2rem;
+  color: #ffffff;
+  background: linear-gradient(120deg, #0f4c81, #1d8a99);
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+  margin-top: 1rem;
+}
+
+nav a:link { color: #ffffff; }
+nav a:visited { color: #e0f2fe; }
+nav a:hover { color: #facc15; }
+nav a:active { color: #f97316; }
+
+/* Main content styles */
+main {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h2 {
+  margin: 1.5rem 0 1rem;
+  padding: .7rem 1rem;
+  color: #ffffff;
+  background: linear-gradient(90deg, #2563eb, #059669);
+  border-radius: 6px;
+}
+
+h3, p {
+  letter-spacing: 0;
+}
+
+p {
+  font-size: 1rem;
+  text-align: left;
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.eventCard {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 2px solid rgba(15, 76, 129, .25);
+  border-radius: 8px;
+  background: rgba(255,255,255,.9);
+}
+
+.selected {
+  outline: 3px solid #facc15;
+}
+
+.hidden-demo {
+  visibility: hidden;
+}
+
+.none-demo {
+  display: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  background: white;
+}
+
+th, td {
+  border: 1px solid #cbd5e1;
+  padding: .75rem;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e0f2fe;
+}
+
+.news {
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  .event-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body {
+    font-size: 90%;
+  }
+
+  main {
+    width: 94vw;
+  }
+
+  .news {
+    column-count: 1;
+  }
+}

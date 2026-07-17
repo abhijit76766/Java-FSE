@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Community Event Portal</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f5f7fb; color: #1f2937; }
+    header, main, footer { max-width: 1100px; margin: auto; padding: 1rem; }
+    nav a { margin-right: 1rem; color: #0f4c81; font-weight: 700; }
+    #welcomeBanner { background: #0f6cbf; color: white; padding: 1rem; border-radius: 8px; }
+    .highlight { background: #fff3cd; padding: .15rem .35rem; border-radius: 4px; }
+    .event-image { width: 180px; height: 115px; object-fit: cover; border: 3px solid #0f6cbf; border-radius: 6px; transition: transform .2s; }
+    .event-image.large { transform: scale(1.35); }
+    table { border-spacing: 1rem; margin: auto; }
+    form { display: grid; gap: .75rem; max-width: 560px; background: white; padding: 1rem; border-radius: 8px; }
+    input, select, textarea, button { padding: .65rem; font: inherit; }
+    button { background: #0f6cbf; color: white; border: 0; border-radius: 6px; cursor: pointer; }
+    output, .message { color: #047857; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header id="home">
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#events">Events</a>
+      <a href="#contact">Contact</a>
+      <a href="help.html" target="_blank">Help</a>
+    </nav>
+    <div id="welcomeBanner">
+      <h1>Welcome, Resident!</h1>
+      <p>Register for local events today. <span style="color: #ffdf5d; font-weight: bold;">Special offer: free entry for seniors.</span></p>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <section id="events">
+      <h2 class="highlight">Community Event Gallery</h2>
+      <table>
+        <caption>Memories from past community events</caption>
+        <tr>
+          <td><img class="event-image" src="https://picsum.photos/seed/music/300/190" alt="Music event" title="Music Night" ondblclick="toggleImage(this)"><p>Music Night</p></td>
+          <td><img class="event-image" src="https://picsum.photos/seed/food/300/190" alt="Food fair" title="Food Fair" ondblclick="toggleImage(this)"><p>Food Fair</p></td>
+          <td><img class="event-image" src="https://picsum.photos/seed/tree/300/190" alt="Tree planting" title="Tree Planting" ondblclick="toggleImage(this)"><p>Tree Planting</p></td>
+        </tr>
+        <tr>
+          <td><img class="event-image" src="https://picsum.photos/seed/art/300/190" alt="Art workshop" title="Art Workshop" ondblclick="toggleImage(this)"><p>Art Workshop</p></td>
+          <td><img class="event-image" src="https://picsum.photos/seed/marathon/300/190" alt="Marathon" title="City Marathon" ondblclick="toggleImage(this)"><p>City Marathon</p></td>
+          <td><img class="event-image" src="https://picsum.photos/seed/books/300/190" alt="Book drive" title="Book Drive" ondblclick="toggleImage(this)"><p>Book Drive</p></td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Event Registration</h2>
+      <form id="registrationForm" onsubmit="registerEvent(event)">
+        <input name="name" type="text" placeholder="Full name" required autofocus>
+        <input name="email" type="email" placeholder="Email address" required>
+        <input name="phone" type="tel" placeholder="10 digit phone" onblur="validatePhone(this)">
+        <input name="date" type="date" required>
+        <select id="eventType" name="eventType" required onchange="showFee(this.value)">
+          <option value="">Choose event type</option>
+          <option value="music">Music - $10</option>
+          <option value="workshop">Workshop - $20</option>
+          <option value="sports">Sports - $15</option>
+        </select>
+        <textarea id="feedback" name="message" rows="4" placeholder="Message" onkeyup="countChars(this)"></textarea>
+        <button type="submit" onclick="showClickConfirmation()">Register</button>
+        <output id="confirmation"></output>
+        <span id="phoneError"></span>
+        <span id="fee"></span>
+        <span id="charCount">0 characters</span>
+      </form>
+      <button onclick="clearPreferences()">Clear Preferences</button>
+    </section>
+
+    <section>
+      <h2>Video Invite</h2>
+      <video width="360" controls oncanplay="videoReady()">
+        <source src="sample-event.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p id="videoStatus" class="message"></p>
+    </section>
+
+    <section>
+      <h2>Nearby Events</h2>
+      <button onclick="findNearbyEvents()">Find Nearby Events</button>
+      <p id="locationOutput"></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <p>Contact: events@city.gov</p>
+  </footer>
+
+  <script>
+    let dirty = false;
+    const select = document.getElementById('eventType');
+    const savedType = localStorage.getItem('preferredEventType');
+    if (savedType) select.value = savedType;
+    document.getElementById('registrationForm').addEventListener('input', () => dirty = true);
+
+    function registerEvent(event) {
+      event.preventDefault();
+      localStorage.setItem('preferredEventType', select.value);
+      sessionStorage.setItem('lastFormUsed', 'registration');
+      document.getElementById('confirmation').textContent = 'Registration submitted successfully.';
+      dirty = false;
+    }
+    function validatePhone(input) {
+      document.getElementById('phoneError').textContent = /^\d{10}$/.test(input.value) ? '' : 'Enter a valid 10 digit phone number.';
+    }
+    function showFee(value) {
+      const fees = { music: '$10', workshop: '$20', sports: '$15' };
+      document.getElementById('fee').textContent = value ? `Selected event fee: ${fees[value]}` : '';
+    }
+    function showClickConfirmation() { console.log('Register button clicked'); }
+    function toggleImage(img) { img.classList.toggle('large'); }
+    function countChars(textarea) { document.getElementById('charCount').textContent = `${textarea.value.length} characters`; }
+    function videoReady() { document.getElementById('videoStatus').textContent = 'Video ready to play'; }
+    function clearPreferences() { localStorage.clear(); sessionStorage.clear(); select.value = ''; }
+    function findNearbyEvents() {
+      const out = document.getElementById('locationOutput');
+      if (!navigator.geolocation) { out.textContent = 'Geolocation is not supported.'; return; }
+      navigator.geolocation.getCurrentPosition(
+        pos => out.textContent = `Latitude: ${pos.coords.latitude}, Longitude: ${pos.coords.longitude}`,
+        err => out.textContent = `Unable to get location: ${err.message}`,
+        { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+      );
+    }
+    window.onbeforeunload = () => dirty ? 'You have unfinished form changes.' : undefined;
+  </script>
+</body>
+</html>

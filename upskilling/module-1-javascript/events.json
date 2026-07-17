@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "Music Night", "date": "2026-08-01", "category": "Music", "location": "New York", "seats": 25 },
+  { "id": 2, "name": "Baking Workshop", "date": "2026-08-04", "category": "Workshop", "location": "Chicago", "seats": 12 },
+  { "id": 3, "name": "City Marathon", "date": "2026-09-12", "category": "Sports", "location": "Los Angeles", "seats": 50 }
+]
